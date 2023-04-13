@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LHJ's web</title>
+		<meta charset="UTF-8">
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+			nav {
+				background-color: #333;
+				color: white;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 10px;
+			}
+			nav ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+			}
+			nav li {
+				margin-left: 20px;
+			}
+			nav li:first-child {
+				margin-left: 0;
+			}
+			nav a {
+				color: white;
+				text-decoration: none;
+			}
+			nav a:hover {
+				text-decoration: underline;
+			}
+			#home {
+				background-image: url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg');
+				background-size: cover;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				color: white;
+				text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+			}
+			#home h1 {
+				font-size: 5em;
+				margin-bottom: 0;
+			}
+			#home p {
+				font-size: 2em;
+				margin-top: 0;
+			}
+			section {
+				padding: 50px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+			h2 {
+				font-size: 3em;
+				margin-bottom: 20px;
+			}
+			#en {
+				display: block;
+			}
+			#zh {
+				display: none;
+			}
+			button {
+				background-color: #333;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				padding: 10px 20px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: white;
+				color: #333;
+			}
+			@media only screen and (max-width: 600px) {
+				nav ul {
+					flex-direction: column;
+				}
+				nav li {
+					margin: 10px 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+		  <ul id="nav-links">
+		    <li><a href="#home" id="home-en">Home</a><a href="#home" id="home-zh" style="display:none">主页</a></li>
+		    <li><a href="#about" id="about-en">About</a><a href="#about" id="about-zh" style="display:none">关于</a></li>
+		    <li><a href="#services" id="services-en">Services</a><a href="#services" id="services-zh" style="display:none">服务</a></li>
+		    <li><a href="#contact" id="contact-en">Contact</a><a href="#contact" id="contact-zh" style="display:none">联系</a></li>
+		  </ul>
+		  <div>
+		    <select id="language-select" onchange="changeLanguage()">
+		      <option value="en">English</option>
+		      <option value="zh">中文</option>
+		    </select>
+		  </div>
+		</nav>
+		<section id="home">
+		  <h1 id="title-en">Welcome to My Website</h1>
+		  <h1 id="title-zh" style="display:none">欢迎来到我的网站</h1>
+		  <p id="services-text-en">What I can serve for you?</p>
+		  <p id="services-text-zh" style="display:none">该网站可以为你们提供什么? </p>
+		</section>
+		<section id="about">
+		  <h2 id="about-header-en">About Us</h2>
+		  <h2 id="about-header-zh" style="display:none">关于我们</h2>
+		  <p id="about-text-en">This is Ma Lab from Zhejiang University.</p>
+		  <p id="about-text-zh" style="display:none">这是马老师实验室网站</p>
+		</section>
+		<script>
+		  function changeLanguage() {
+		    var language = document.getElementById("language-select").value;
+		    if (language === "en") {
+		      document.getElementById("title-en").style.display = "block";
+		      document.getElementById("title-zh").style.display = "none";
+		      document.getElementById("services-text-en").style.display = "block";
+		      document.getElementById("services-text-zh").style.display = "none";
+		      document.querySelectorAll("[id$='-en']").forEach(function(el) {
+		        el.style.display = "block";
+		      });
+		      document.querySelectorAll("[id$='-zh']").forEach(function(el) {
+		        el.style.display = "none";
+		      });
+		    } else if (language === "zh") {
+		      document.getElementById("title-en").style.display = "none";
+		      document.getElementById("title-zh").style.display = "block";
+		      document.getElementById("services-text-en").style.display = "none";
+		      document.getElementById("services-text-zh").style.display = "block";
+		      document.querySelectorAll("[id$='-zh']").forEach(function(el) {
+		        el.style.display = "block";
+		      });
+		      document.querySelectorAll("[id$='-en']").forEach(function(el) {
+		        el.style.display = "none";
+		      });
+		    }
+		  }
+		</script>
+		<section id="services">
+			<h2 id="services-header-en">Our Services</h2>
+			<h2 id="services-header-zh" style="display:none">服务范围</h2>
+			<ul>
+				<li><a href="http://www.sdbzju.cn/shouye.html">Lab_website</a></li>
+			</ul>
+		</section>
+
+		<section id="contact">
+		  <h2 id="contact-header-en">Useful URL</h2>
+		  <h2 id="contact-header-zh" style="display:none">常用网址</h2>
+		  <ul>
+			<li><a href="https://pubmed.ncbi.nlm.nih.gov/advanced/">pubmed</a></li>
+			<li><a href="http://flybase.org/">flybase</a></li>
+			<li><a href="https://translate.google.com/" target="_blank">google translate</a>
+			<a href="https://fanyi.baidu.com/?aldtype=16047#auto/zh" target="_blank">百度翻译</a></li>
+			<li><a href="https://www.medreading.cn/pubmed_zh?t=1681311697657" target="_blank">Medreading</a>
+			<a href="https://shimo.im/desktop" target="_blank">石墨文档</a></li>
+		</ul>
+		</section>
+		
+	</main>
+	<footer>
+		<p>&copy; 2023 Ma_la@zju. All rights reserved.
+		<a href="http://www.sdbzju.cn/article_39405.html">Lab news</a> 
+		<a href="https://zupo.zju.edu.cn/xw/list.htm">ZJU_News</a>
+		<a href="https://www.zju.edu.cn/xs/list.htm">ZJU_seminar</a></p>
+	</footer>
+</body>
+</html>
